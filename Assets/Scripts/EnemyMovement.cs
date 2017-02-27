@@ -1,11 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyMovement : MonoBehaviour {
 
-	public float maxSpeed;
+	public float normalSpeed;
+	public float sprintSpeed;
+	public float sightLength;
+	public float meanderTime;
+
+	float speed;
+	float meandercd = 0f;
 	float objectBoundaryRadius = 0.5f;
+	Vector3 lastDir;
 	Transform wizard;
 
 	// Update is called once per frame
@@ -23,11 +31,27 @@ public class EnemyMovement : MonoBehaviour {
 			return;
 
 		Vector3 dir = wizard.position - transform.position;
+
+		if (dir.magnitude >= sightLength) { 
+			dir = new Vector3 (Random.Range (-10, 10), Random.Range (-10, 10));
+			speed = normalSpeed;
+			if (meandercd >= 0) {
+				meandercd -= Time.deltaTime;
+				dir = lastDir;
+			}
+			else
+				meandercd = meanderTime;
+		} else {
+			speed = sprintSpeed;
+		}
+
 		dir.Normalize ();
 
+		lastDir = dir;
+
 		Vector3 pos = transform.position;
-		pos.y += dir.y * maxSpeed * Time.deltaTime;
-		pos.x += dir.x * maxSpeed * Time.deltaTime;
+		pos.y += dir.y * speed * Time.deltaTime;
+		pos.x += dir.x * speed * Time.deltaTime;
 
 		if (pos.y + objectBoundaryRadius > Camera.main.orthographicSize) {
 			pos.y = Camera.main.orthographicSize - objectBoundaryRadius;
