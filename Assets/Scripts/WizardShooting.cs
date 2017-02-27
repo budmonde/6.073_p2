@@ -16,13 +16,12 @@ public class WizardShooting : MonoBehaviour {
 	void Update () {
 		cooldownTimer -= Time.deltaTime;
 
+
+
 		if (Input.GetMouseButtonDown(leftMouseButtonIndex) && cooldownTimer <= 0 && manaPool > 0) {
 			cooldownTimer = fireDelay;
-
-
 			Instantiate (bombPrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.rotation);
-
-			
+			manaPool-= 10;
 		}
 	}
 }
