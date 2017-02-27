@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{AD302A2F-2DA9-8EF1-7B52-2E092F3F7C45}</ProjectGuid>
+    <ProjectGuid>{851172B4-1111-4380-7AB7-5C936731842D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -52,8 +52,11 @@
      <Compile Include="Assets\Scripts\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\Explosion.cs" />
      <Compile Include="Assets\Scripts\FamiliarMovement.cs" />
+     <Compile Include="Assets\Scripts\ManaMask.cs" />
      <Compile Include="Assets\Scripts\PlayerSpawner.cs" />
+     <Compile Include="Assets\Scripts\UIManager.cs" />
      <Compile Include="Assets\Scripts\WizardMovement.cs" />
+     <Compile Include="Assets\Scripts\WizardShooting.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
