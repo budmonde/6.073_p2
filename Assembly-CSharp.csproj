@@ -54,7 +54,6 @@
      <Compile Include="Assets\Scripts\FamiliarMovement.cs" />
      <Compile Include="Assets\Scripts\ManaMask.cs" />
      <Compile Include="Assets\Scripts\PlayerSpawner.cs" />
-     <Compile Include="Assets\Scripts\UIManager.cs" />
      <Compile Include="Assets\Scripts\WizardMovement.cs" />
      <Compile Include="Assets\Scripts\WizardShooting.cs" />
  <Reference Include="UnityEngine.UI">
