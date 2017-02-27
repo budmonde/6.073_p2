@@ -5,19 +5,18 @@ using UnityEngine;
 public class WizardMovement : MonoBehaviour {
 
 	public float maxSpeed;
-	float objectBoundaryRadius = 0.5f;
+	float objectBoundaryRadius = 0.5f * 0.3f;
 
 	// Use this for initialization
 	void Start () {
-		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	void Move(float x, float y) {
 
 		Vector3 pos = transform.position;
-		pos.y += Input.GetAxis("W_Vertical") * maxSpeed * Time.deltaTime;
-		pos.x += Input.GetAxis("W_Horizontal") * maxSpeed * Time.deltaTime;
+		pos.y += y * maxSpeed * Time.deltaTime;
+		pos.x += x * maxSpeed * Time.deltaTime;
+
 
 		if (pos.y + objectBoundaryRadius > Camera.main.orthographicSize) {
 			pos.y = Camera.main.orthographicSize - objectBoundaryRadius;
@@ -26,7 +25,7 @@ public class WizardMovement : MonoBehaviour {
 			pos.y = -Camera.main.orthographicSize + objectBoundaryRadius;
 		}
 
-		float screenRatio = (float) Screen.width / (float) Screen.height;
+		float screenRatio = (float)Screen.width / (float)Screen.height;
 		float widthOrtho = Camera.main.orthographicSize * screenRatio;
 
 		if (pos.x + objectBoundaryRadius > widthOrtho) {
@@ -37,5 +36,12 @@ public class WizardMovement : MonoBehaviour {
 		}
 
 		transform.position = pos;
+	}
+	
+	// Update is called once per frame
+	void FixedUpdate () {
+		float x = Input.GetAxis ("W_Horizontal");
+		float y = Input.GetAxis ("W_Vertical");
+		Move (x, y);
 	}
 }

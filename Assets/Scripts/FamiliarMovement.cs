@@ -5,7 +5,7 @@ using UnityEngine;
 public class FamiliarMovement : MonoBehaviour {
 
 	public float maxSpeed;
-	float objectBoundaryRadius = 0.5f;
+	float objectBoundaryRadius = 0.5f*0.3f;
 
 	// Use this for initialization
 	void Start () {
