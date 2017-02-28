@@ -58,17 +58,17 @@ public class UIManager : MonoBehaviour
 		if (firstPass)
 		{
 
-			//maxMana = wizard.GetComponent<WizardShooting>().manaPool;
+			maxMana = wizard.GetComponent<WizardShooting>().manaPool;
 			maxWizardHealth = wizard.GetComponent<CollisionDamage>().health;
 			maxFamiliarHealth = familiar.GetComponent<CollisionDamage>().health;
 
 			firstPass = false;
 		}
 
-		//float manaRatio = wizard.GetComponent<WizardShooting>().manaPool / maxMana;
+		float manaRatio = wizard.GetComponent<WizardShooting>().manaPool / maxMana;
 		float wHealthRatio = wizard.GetComponent<CollisionDamage>().health / maxWizardHealth;
 
-		//manaMask.GetComponent<RectTransform>().sizeDelta = new Vector2(manaRatio * manaNominal.width, manaNominal.height);
+		manaMask.GetComponent<RectTransform>().sizeDelta = new Vector2(manaRatio * manaNominal.width, manaNominal.height);
 		wHealthMask.GetComponent<RectTransform>().sizeDelta = new Vector2(wHealthRatio * wHealthNominal.width, wHealthNominal.height);
 
 		if (familiar != null)
