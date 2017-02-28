@@ -51,7 +51,7 @@ public class UIManager : MonoBehaviour
 		// Don't bother is wizard wasn't found
 		if (wizard == null)
 		{
-			Debug.LogWarning("Failed to find Wizard");
+			//Debug.LogWarning("Failed to find Wizard");
 			return;
 		}
 
