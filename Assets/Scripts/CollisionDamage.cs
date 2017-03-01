@@ -44,6 +44,9 @@ public class CollisionDamage : MonoBehaviour {
 	}
 
 	void Die() {
+		if (gameObject.name == "Objective") {
+			GameObject.Find ("PlayerSpawner").GetComponent<PlayerSpawner> ().won = true;
+		}
 		Destroy (gameObject);
 	}
 }
