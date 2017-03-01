@@ -5,23 +5,40 @@ using UnityEngine;
 public class WizardShooting : MonoBehaviour {
 
 	private int leftMouseButtonIndex = 0;
-	public int manaPool = 100;
 	public GameObject bombPrefab;
+	public int maxMana;
+	public float regenTimer;
 
 	private Vector2 bombPlacement;
 	public float fireDelay = 0.25f;
+	public int mana;
+	float regencd;
 	float cooldownTimer = 0;
+
+	void Start() {
+		mana = maxMana;
+		regencd = regenTimer;
+	}
 	
 	// Update is called once per frame
 	void Update () {
 		cooldownTimer -= Time.deltaTime;
 
+		if (mana < maxMana) {
+			if (regencd <= 0) {
+				mana++;
+				regencd = regenTimer;
+			} else {
+				regencd -= Time.deltaTime;
+			}
+		}
 
-
-		if (Input.GetMouseButtonDown(leftMouseButtonIndex) && cooldownTimer <= 0 && manaPool > 0) {
+		if (Input.GetMouseButtonDown(leftMouseButtonIndex) && cooldownTimer <= 0 && mana > 0) {
 			cooldownTimer = fireDelay;
-			Instantiate (bombPrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.rotation);
-			manaPool-= 10;
+			Vector3 position = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+			position.z = 0;
+			Instantiate (bombPrefab, position, transform.rotation);
+			mana--;
 		}
 	}
 }
